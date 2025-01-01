@@ -2,7 +2,7 @@ const CHATS_STORAGE_KEY = 'chatHistory';
 
 export const getStoredChats = () => {
     const stored = localStorage.getItem(CHATS_STORAGE_KEY);
-    return stored ? JSON.parse(stored) : null;
+    return stored ? JSON.parse(stored) : [];
 };
 
 export const storeChats = (chats) => {

@@ -1,39 +1,42 @@
 import { useState, useCallback, useEffect } from 'react';
-import { useName } from '../context/NameContext';
 import { sendChatMessage } from '../api/chatApi';
 import { getStoredChats, storeChats } from '../utils/storage';
 
-export function useChat(initialTopic) {
+export function useChat(topic) {
     const [chats, setChats] = useState([]);
     const [currentChatIndex, setCurrentChatIndex] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
-    const { name } = useName();
 
-    const currentChat = chats[currentChatIndex] || { messages: [], topic: null };
-
+    // Initialize or find existing chat for the current topic
     useEffect(() => {
         const storedChats = getStoredChats();
         if (storedChats && storedChats.length > 0) {
             setChats(storedChats);
+            // Find chat with current topic or create new one
+            const existingChatIndex = storedChats.findIndex(chat => chat.topic === topic);
+            if (existingChatIndex >= 0) {
+                setCurrentChatIndex(existingChatIndex);
+            } else {
+                initializeNewChat(topic);
+            }
         } else {
-            initializeNewChat();
+            initializeNewChat(topic);
         }
-    }, []);
+    }, [topic]); // Re-run when topic changes
 
-    useEffect(() => {
-        if (initialTopic && (!currentChat.topic || currentChat.topic !== initialTopic)) {
-            initializeNewChat(initialTopic);
-        }
-    }, [initialTopic]);
-
-    const initializeNewChat = useCallback(async (topic) => {
+    const initializeNewChat = async (chatTopic) => {
         setIsLoading(true);
+        setError(null);
         try {
-            const { response } = await sendChatMessage([], topic);
+            const { response } = await sendChatMessage({
+                messages: [],
+                topic: chatTopic
+            });
+
             const newChat = {
                 id: Date.now(),
-                topic,
+                topic: chatTopic,
                 messages: [{ role: 'assistant', content: response }],
                 createdAt: new Date().toISOString()
             };
@@ -43,33 +46,33 @@ export function useChat(initialTopic) {
                 storeChats(updatedChats);
                 return updatedChats;
             });
-            setCurrentChatIndex(prevIndex => prevIndex + 1);
+
+            setCurrentChatIndex(prevChats => prevChats.length || 0);
+
         } catch (error) {
             setError(error instanceof Error ? error.message : 'An error occurred');
+            console.error(error);
         } finally {
             setIsLoading(false);
         }
-    }, []);
-
+    };
 
     const sendMessage = useCallback(async (content) => {
         setIsLoading(true);
         setError(null);
 
+        const currentChat = chats[currentChatIndex] || { messages: [], topic };
         const newMessage = { role: 'user', content };
-        const currentMessages = currentChat.messages;
+        const currentMessages = [...currentChat.messages, newMessage];
 
         try {
-            const { response } = await sendChatMessage(
-                [...currentMessages, newMessage],
-                currentChat.topic
-            );
+            const { response } = await sendChatMessage({
+                messages: currentMessages,
+                topic: currentChat.topic
+            });
 
-            const updatedMessages = [
-                ...currentMessages,
-                newMessage,
-                { role: 'assistant', content: response }
-            ];
+            const assistantMessage = { role: 'assistant', content: response };
+            const updatedMessages = [...currentMessages, assistantMessage];
 
             setChats(prevChats => {
                 const updatedChats = prevChats.map((chat, index) =>
@@ -82,20 +85,21 @@ export function useChat(initialTopic) {
             });
         } catch (error) {
             setError(error instanceof Error ? error.message : 'An error occurred');
+            console.error(error);
         } finally {
             setIsLoading(false);
         }
-    }, [currentChat, currentChatIndex]);
+    }, [chats, currentChatIndex, topic]);
 
-
+    // Get current chat or return empty chat if none exists
+    const currentChat = chats[currentChatIndex] || { messages: [], topic };
 
     return {
         messages: currentChat.messages,
-        isLoading,
-        error,
         sendMessage,
         currentTopic: currentChat.topic,
-        initializeNewChat,
+        isLoading,
+        error,
         chats,
         currentChatIndex
     };

@@ -1,21 +1,22 @@
-const API_URL = 'http://localhost:3000';
 
-export const sendChatMessage = async (messages, topic) => {
-    const response = await fetch(`${API_URL}/chat`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            messages,
-            topic,
-            isInitialMessage: messages.length === 0 // Tell backend if this is the first message
-        }),
-    });
 
-    if (!response.ok) {
-        throw new Error('Failed to send message');
+export async function sendChatMessage(request) {
+    try {
+        const response = await fetch('http://127.0.0.1:8000/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(request),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to send message');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Error sending message:', error);
+        throw error;
     }
-
-    return response.json();
-};
+}

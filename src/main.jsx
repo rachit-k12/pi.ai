@@ -11,11 +11,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider>
-          <TopicProvider>
-              <NameProvider>
-                  <App />
-              </NameProvider>
-          </TopicProvider>
+          <NameProvider>
+              <TopicProvider>
+                      <App />
+              </TopicProvider>
+          </NameProvider>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,

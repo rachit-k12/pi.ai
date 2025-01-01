@@ -1,20 +1,20 @@
 import React, { useEffect, useRef } from 'react';
 
-export function MessageList({ messages = [], enableScroll = true }) {
+export function MessageList({ messages = []}) {
     const messagesEndRef = useRef(null);
 
     useEffect(() => {
-        if (enableScroll && messagesEndRef.current) {
+        if (messagesEndRef.current) {
             messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
         }
-    }, [messages, enableScroll]);
+    }, [messages]);
 
     if (!messages || messages.length === 0) {
         return null;
     }
 
     return (
-        <div className="flex flex-col space-y-4 mt-6 lg:px-56 md:px-36 text-2xl max-h-[calc(100vh-300px)] overflow-y-auto">
+        <div className="flex flex-col space-y-4 mt-6 px-6 text-2xl max-h-[calc(100vh-300px)] overflow-y-auto">
             {messages.map((message, index) => (
                 <div
                     key={index}
