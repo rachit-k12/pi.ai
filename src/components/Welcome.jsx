@@ -22,20 +22,14 @@ const Welcome = () => {
 
                 <button onClick={() => {
                     const storedMessages = localStorage.getItem('chatMessages');
-                    if (storedMessages){
+                    if (storedMessages) {
                         navigate("/talk")
-                    }
-                    else {
+                    } else {
 
                         navigate("/onboarding")
                     }
                 }}
-                        className='bg-[#0D3C26] w-full md:w-1/2 h-auto py-4 text-white text-lg md:text-xl font-medium mb-1 rounded-full font-sans my-5 mt-24'>Next
-                </button>
-                <button onClick={() => {
-                    navigate("/talk/profile/account")
-                }}
-                        className=' text-[#0D3C26] w-full md:w-1/2 h-auto py-4 text-lg md:text-xl font-medium mb-1 rounded-full font-sans '>Login
+                        className='bg-[#0D3C26] w-[350px] h-auto py-4 text-white text-lg md:text-xl font-medium mb-1 rounded-full font-sans my-5 mt-52'>Next
                 </button>
             </div>
         </div>

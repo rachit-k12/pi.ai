@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-export function MessageList({ messages = []}) {
+export function MessageList({ messages = [] }) {
     const messagesEndRef = useRef(null);
 
     useEffect(() => {
@@ -14,7 +14,7 @@ export function MessageList({ messages = []}) {
     }
 
     return (
-        <div className="flex flex-col space-y-4 mt-6 px-6 text-2xl max-h-[calc(100vh-300px)] overflow-y-auto">
+        <div className="flex flex-col space-y-4 mt-4 md:mt-6 px-7 md:px-24 text-lg md:text-2xl max-h-[calc(100vh-150px)] overflow-y-auto scrollbar-hide">
             {messages.map((message, index) => (
                 <div
                     key={index}
@@ -23,13 +23,13 @@ export function MessageList({ messages = []}) {
                     }`}
                 >
                     <div
-                        className={`max-w-[95%] rounded-lg p-4 ${
+                        className={`max-w-[95%] rounded-lg p-3 md:p-4 ${
                             message.role === 'user'
-                                ? 'bg-[#F5EADC] text-black'
-                                : 'bg-transparent text-black'
+                                ? 'bg-secondary-300 text-primary-500'
+                                : 'bg-transparent text-primary-500'
                         }`}
                     >
-                        <p className="whitespace-pre-wrap tracking-normal leading-normal">
+                        <p className="whitespace-pre-wrap tracking-normal leading-normal text-base md:text-2xl">
                             {message.content}
                         </p>
                     </div>

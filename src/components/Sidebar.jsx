@@ -4,7 +4,7 @@ export function Sidebar() {
     const location = useLocation();
 
     return (
-        <div className="h-full flex flex-col rounded-2xl text-[#6B6255] items-center py-4 bg-[#fdf7f5] border-r">
+        <div className="h-full flex md:flex-col  rounded-2xl text-[#6B6255] items-center py-4 bg-transparent xs:bg-[#fdf7f5] md:border-r">
             <Link
                 to="/talk"
                 className={`p-3 rounded-lg text flex flex-col justify-center items-center mb-2 ${

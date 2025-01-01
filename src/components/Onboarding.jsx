@@ -17,7 +17,7 @@ export const Onboarding = () => {
     useEffect(() => {
         // Trigger animation on initial load
         setIsAnimating(true);
-        const timer = setTimeout(() => setIsAnimating(false), 0);
+        const timer = setTimeout(() => setIsAnimating(false), 500);
         return () => clearTimeout(timer);
     }, []);
 

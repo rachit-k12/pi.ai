@@ -5,11 +5,11 @@ export const DiscoverHistory = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="mb-6 flex items-center rounded-3xl shadow-2xl shadow-neutral-400 border border-white shadow-card transition-all duration-150 hover:scale-95">
-            <div className="bg-[#FAF3EA] border-1 border-white p-4 rounded-3xl shadow-sm hover:shadow-md transition-shadow cursor-pointer">
-                <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-[#FAF3EA] rounded-lg flex items-center justify-center">
-                        <div className="pr-4">
+        <div className="mb-4 md:mb-6 flex items-center rounded-2xl md:rounded-3xl shadow-lg shadow-neutral-400/20 border border-white transition-all duration-150 hover:scale-[0.98]">
+            <div className="bg-secondary-200 p-3 md:p-4 rounded-2xl md:rounded-3xl shadow-sm hover:shadow-md transition-shadow cursor-pointer w-full">
+                <div className="flex items-center gap-2 md:gap-3">
+                    <div className="w-10 md:w-12 h-10 md:h-12 bg-secondary-200 rounded-lg flex items-center justify-center">
+                        <div className="pr-3 md:pr-4">
                             <svg width="56" height="56" fill="none" xmlns="http://www.w3.org/2000/svg"
                                  className="h-[56px] w-[56px]">
                                 <path
@@ -34,12 +34,13 @@ export const DiscoverHistory = () => {
                         </div>
                     </div>
                     <div className="font-sans">
-                        <h3 className="font-condensed text-2xl font-[500] text-black">Download your Pi conversation<br/> history</h3>
-                        <p onClick={() => navigate("/talk/profile/history")} className="mt-4 block text-[#038247] font-[500]">Manage history</p>
+                        <h3 className="text-lg md:text-2xl font-[500] text-primary-500">See your Pi conversation
+                            history</h3>
+                        <p onClick={() => navigate("/talk/profile/history")}
+                           className="mt-2 md:mt-4 block text-accent-green font-[500]">Manage history</p>
                     </div>
                 </div>
             </div>
         </div>
     );
 };
-

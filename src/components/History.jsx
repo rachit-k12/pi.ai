@@ -29,7 +29,7 @@ export function History() {
     }
 
     return (
-        <div className="p-6 py-12 h-screen overflow-scroll scrollbar-hide">
+        <div className="p-6 py-12 h-screen overflow-scroll scrollbar-hide bg-secondary">
             <h1 className="text-4xl font-serif text-center mb-8">Your Chat History with Pi</h1>
             <div className="space-y-8">
                 {chats.map((chat) => (

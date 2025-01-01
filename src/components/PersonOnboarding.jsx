@@ -9,6 +9,7 @@ const TakeName = () => {
     const [inputName, setInputName] = useState("");
 
     const handleSubmit = () => {
+        localStorage.setItem('name', inputName);
         if (!inputName.trim() || isSending) return;
         setIsSending(true);
         setName(inputName.trim());
@@ -30,14 +31,14 @@ const TakeName = () => {
                         <img src="https://pi.ai/illustrations/high-five.svg" alt="welcome-clap" className='w-11 h-11'/>
                     </div>
                     <p className='text-3xl mb-3'>What's your name?</p>
-                    <div className='flex flex-col justify-center items-start mt-2 text-[#6B6255] font-medium font-sans text-base tracking-normal'>
+                    <div className='flex flex-col justify-center items-start mt-2 text-[#6B6255] font-medium font-sans text-xs tracking-normal'>
                         <p>I take data privacy seriously. Our chats stay between us.</p>
                         <p>We never share your data for ads or marketing.</p>
                     </div>
                 </div>
 
                 <div className='mt-10 w-full'>
-                    <div className="flex items-center w-[45vw] bg-white rounded-full shadow-lg overflow-hidden hover:border hover:border-[#c9b597] px-2">
+                    <div className="flex items-center md:w-[65vw] max-w-[800px] bg-white rounded-full shadow-lg overflow-hidden hover:border hover:border-[#c9b597] px-2">
                         <input
                             type="text"
                             placeholder="Your first name"
