@@ -31,7 +31,7 @@ const TakeName = () => {
                         <img src="https://pi.ai/illustrations/high-five.svg" alt="welcome-clap" className='w-11 h-11'/>
                     </div>
                     <p className='text-3xl mb-3'>What's your name?</p>
-                    <div className='flex flex-col justify-center items-start mt-2 text-[#6B6255] font-medium font-sans text-xs tracking-normal'>
+                    <div className='flex flex-col justify-center items-start mt-2 text-[#6B6255] font-medium font-sans text- tracking-normal'>
                         <p>I take data privacy seriously. Our chats stay between us.</p>
                         <p>We never share your data for ads or marketing.</p>
                     </div>

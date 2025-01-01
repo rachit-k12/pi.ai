@@ -11,7 +11,7 @@ export const Onboarding = () => {
         setTimeout(() => {
             setIsSecondPage(!isSecondPage);
             setIsAnimating(false);
-        }, 500); // Match this with the animation duration
+        }, 0); // Match this with the animation duration
     };
 
     useEffect(() => {
@@ -25,7 +25,9 @@ export const Onboarding = () => {
         <div className="h-screen w-full md:h-screen bg-[#FAF3EA] overflow-hidden">
             <div className="h-full relative">
                 <button
-                    onClick={()=> {!isSecondPage ? navigate('/') : togglePage()}}
+                    onClick={() => {
+                        !isSecondPage ? navigate('/') : togglePage()
+                    }}
                     aria-label="Go back"
                     className="flex bg-[#EDE1D1] h-9 w-9 items-center justify-center rounded-full p-1.5 text-[#0D3C26] hover:bg-[#E5D5C0] active:bg-[#DEC9B0] absolute ml-4 mt-8 z-20 transition-all duration-300 ease-in-out"
                     type="button"
@@ -45,13 +47,18 @@ export const Onboarding = () => {
                     </svg>
                 </button>
 
-                <div className="flex h-full grow text-black items-center justify-center m-auto">
-                    <div className="flex w-full grow text-black items-center justify-center">
-                        <h1 className={`p-10 text-[#0D3C26] text-center font-[550] text-5xl transition-all duration-300 ease-in ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
-                            <i className="text-6xl font-[600]">{isSecondPage ? "Grow" : "Create"}</i><br/>
-                            with Pi
-                        </h1>
-                    </div>
+                <div className="flex flex-col h-full items-center justify-center text-center">
+                    <h1
+                        className={`p-4 text-[#0D3C26] font-[550] text-3xl md:text-5xl transition-all duration-300 ${
+                            isAnimating ? "opacity-0" : "opacity-100"
+                        }`}
+                    >
+                        <i className="text-4xl md:text-6xl font-[600]">
+                            {isSecondPage ? "Grow" : "Create"}
+                        </i>
+                        <br/>
+                        with Pi
+                    </h1>
                 </div>
 
                 <div className="absolute inset-0 overflow-hidden">
@@ -222,7 +229,9 @@ export const Onboarding = () => {
 
                 <div className={'flex justify-center items-center w-full'}>
                     <button
-                        onClick={()=> {isSecondPage ? navigate('/persononboarding') : togglePage()}}
+                        onClick={() => {
+                            isSecondPage ? navigate('/persononboarding') : togglePage()
+                        }}
                         className='bg-[#0D3C26] w-[350px] mx-auto absolute bottom-4 h-auto py-4 text-white text-lg md:text-xl font-medium mb-1 rounded-full font-sans my-5 mt-24 transition-all duration-300 ease-in-out hover:bg-[#0A2E1D] active:bg-[#072013]'
                     >
                         Next
@@ -233,7 +242,7 @@ export const Onboarding = () => {
     );
 };
 
-const OnboardingImage = ({ alt, src, style, isAnimating, delay }) => (
+const OnboardingImage = ({alt, src, style, isAnimating, delay}) => (
     <div
         className={`absolute transition-all duration-300 ease-in ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
         style={{...style, transitionDelay: `${delay}ms`}}

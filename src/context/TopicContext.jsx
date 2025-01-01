@@ -9,7 +9,6 @@ export function TopicProvider({ children }) {
         topic,
         setTopic,
     };
-
     return (
         <TopicContext.Provider value={value}>
             {children}

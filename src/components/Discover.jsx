@@ -67,7 +67,6 @@ export function Discover() {
 
     const getGreeting = () => {
         const hour = new Date().getHours();
-        console.log(hour,name);
         if (hour < 12 && hour > 4) return `Good morning, ${name ? name :"User"}`;
         if (hour < 17 && hour >= 12) return `Good afternoon, ${name ? name :"User"}`;
         return `Good evening, ${name ? name :"User"}`;

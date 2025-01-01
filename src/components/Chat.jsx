@@ -6,11 +6,14 @@ export function Chat({ topic }) {
     const [prompt, setPrompt] = useState("");
     const { messages, isLoading, error, sendMessage } = useChat(topic);
 
-    const handlePrompt = async () => {
-        if (!prompt.trim() || isLoading) return;
-        const message = prompt;
-        setPrompt("");
-        await sendMessage(message);
+    const handlePrompt =  () => {
+        setTimeout(async ()=>{
+            if (!prompt.trim() || isLoading) return;
+            const message = prompt;
+            setPrompt("");
+            await sendMessage(message);
+        },200)
+
     };
 
     return (

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import {Button} from "./ui/Button.jsx";
 
 export function MessageList({ messages = [] }) {
     const messagesEndRef = useRef(null);
@@ -10,11 +11,16 @@ export function MessageList({ messages = [] }) {
     }, [messages]);
 
     if (!messages || messages.length === 0) {
-        return null;
+        return (
+            <h1 className="w-full h-full flex flex-col justify-center items-center">
+            <Button
+                onClick = {() => location.reload()}>Click Here to chat with Pi. </Button></h1>
+        );
     }
 
     return (
-        <div className="flex flex-col space-y-4 mt-4 md:mt-6 px-7 md:px-24 text-lg md:text-2xl max-h-[calc(100vh-150px)] overflow-y-auto scrollbar-hide">
+        <div
+            className="flex flex-col space-y-4 mt-4 md:mt-6 px-7 md:px-24 text-lg md:text-2xl max-h-[calc(100vh-150px)] overflow-y-auto scrollbar-hide">
             {messages.map((message, index) => (
                 <div
                     key={index}

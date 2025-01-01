@@ -16,6 +16,7 @@ export function useChat(topic) {
             // Find chat with current topic or create new one
             const existingChatIndex = storedChats.findIndex(chat => chat.topic === topic);
             if (existingChatIndex >= 0) {
+
                 setCurrentChatIndex(existingChatIndex);
             } else {
                 initializeNewChat(topic);
@@ -47,7 +48,7 @@ export function useChat(topic) {
                 return updatedChats;
             });
 
-            setCurrentChatIndex(prevChats => prevChats.length || 0);
+            setCurrentChatIndex(prevChats => parseInt(prevChats.length ));
 
         } catch (error) {
             setError(error instanceof Error ? error.message : 'An error occurred');
