@@ -7,7 +7,7 @@ export const DiscoverHistory = () => {
     return (
         <div className="mb-4 md:mb-6 flex items-center rounded-2xl md:rounded-3xl shadow-lg shadow-neutral-400/20 border border-white transition-all duration-150 hover:scale-[0.98]">
             <div className="bg-secondary-200 p-3 md:p-4 rounded-2xl md:rounded-3xl shadow-sm hover:shadow-md transition-shadow cursor-pointer w-full">
-                <div className="flex items-center gap-2 md:gap-3">
+                <div onClick={() => navigate("/talk/profile/history")} className="flex items-center gap-2 md:gap-3">
                     <div className="w-10 md:w-12 h-10 md:h-12 bg-secondary-200 rounded-lg flex items-center justify-center">
                         <div className="pr-3 md:pr-4">
                             <svg width="56" height="56" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +36,7 @@ export const DiscoverHistory = () => {
                     <div className="font-sans">
                         <h3 className="text-lg md:text-2xl font-[500] text-primary-500">See your Pi conversation
                             history</h3>
-                        <p onClick={() => navigate("/talk/profile/history")}
+                        <p
                            className="mt-2 md:mt-4 block text-accent-green font-[500]">Manage history</p>
                     </div>
                 </div>

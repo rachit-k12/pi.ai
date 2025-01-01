@@ -7,8 +7,8 @@ export function ChatHistoryView({ chat }) {
             <h2 className="text-2xl font-serif font-bold text-center mb-4">
                 {chat.topic || 'Chat'} - {new Date(chat.createdAt).toLocaleDateString()}
             </h2>
-            <MessageList messages={chat.messages} scroll={false} />
-            <hr className="my-6 border-gray-200" />
+            <hr className="my-6 border-gray-200"/>
+            <MessageList messages={chat.messages} scroll={false}/>
         </div>
     );
 }
