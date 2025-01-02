@@ -35,7 +35,7 @@ export function MessageList({ messages = [] }) {
                                 : 'bg-transparent text-primary-500'
                         }`}
                     >
-                        <p className=" tracking-wide leading-loose text-base md:text-2xl font-serif">
+                        <p className=" tracking-wide leading-loose text-base ">
                             {message.content}
                         </p>
                     </div>
