@@ -232,7 +232,7 @@ export const Onboarding = () => {
                         onClick={() => {
                             isSecondPage ? navigate('/persononboarding') : togglePage()
                         }}
-                        className='bg-[#0D3C26] w-[350px] mx-auto absolute bottom-20 md:bottom-4 h-auto py-4 text-white text-lg md:text-xl font-medium mb-1 rounded-full font-sans my-5 mt-24 transition-all duration-300 ease-in-out hover:bg-[#0A2E1D] active:bg-[#072013]'
+                        className='bg-[#0D3C26] w-[350px] mx-auto absolute bottom-16 md:bottom-4 h-auto py-4 text-white text-lg md:text-xl font-medium mb-1 rounded-full font-sans my-5 mt-24 transition-all duration-300 ease-in-out hover:bg-[#0A2E1D] active:bg-[#072013]'
                     >
                         Next
                     </button>
