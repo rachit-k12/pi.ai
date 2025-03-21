@@ -2,7 +2,7 @@
 
 export async function sendChatMessage(request) {
     try {
-        const response = await fetch('https://pi-backend-psoq.onrender.com/chat', {
+        const response = await fetch('https://pi-backend.rachitkumar1310.workers.dev/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
